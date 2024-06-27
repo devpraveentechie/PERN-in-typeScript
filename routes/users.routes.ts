@@ -1,7 +1,6 @@
 import { Router, Request, Response } from "express";
 import User, { UserMap } from "../models/user";
-import database from "../database";
-import { Optional } from "sequelize";
+import database from "../configs/database";
 
 const router = Router();
 // GET - users
