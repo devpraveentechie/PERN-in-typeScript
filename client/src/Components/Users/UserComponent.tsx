@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getUser } from "../../shared/services/userApi";
+import { deleteUser, getUser } from "../../shared/services/userApi";
 import { User } from "../../types/user";
 import "./style.css";
 interface UserProps {
@@ -36,6 +36,16 @@ const UserComponent = ({ user }: UserProps) => {
         </div>
         <div className="cell">
           <span>{userdata?.country}</span>
+        </div>
+        <div className="cell">
+          <button
+            onClick={async (event) => {
+              event.preventDefault();
+              await deleteUser(userdata!.id);
+            }}
+          >
+            Delete User
+          </button>
         </div>
       </div>
     </>

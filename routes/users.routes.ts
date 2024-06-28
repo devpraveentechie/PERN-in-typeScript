@@ -18,11 +18,22 @@ router.get("/:id", async (req: Request, res: Response) => {
 });
 // POST - users
 router.post("/", async (req: Request, res: Response) => {
-  const id = Number(req.params.id);
   let newUser = req.body as User as any;
+  console.log("newUser", newUser);
   UserMap(database);
   const result = await User.create(newUser);
   newUser = result.dataValues as User;
   res.status(201).json({ user: newUser });
+});
+// DELETE - users
+router.delete("/:id", async (req: Request, res: Response) => {
+  UserMap(database);
+  const id = Number(req.params.id);
+  const result = await User.destroy({
+    where: {
+      id: id,
+    },
+  });
+  res.status(200).json({ user: result });
 });
 export default router;

@@ -3,6 +3,7 @@ import UserComponent from "./UserComponent";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { getUsers } from "../../shared/services/userApi";
+import UserForm from "./UserForm";
 
 const Users = () => {
   const [users, setUsers] = useState<User[]>();
@@ -17,6 +18,8 @@ const Users = () => {
   }, [users]);
   return (
     <div className="wrapper">
+      <UserForm />
+      <h1>User List</h1>
       <div className="tableHeader">
         <div className="cell">
           <span>Id</span>
@@ -29,6 +32,9 @@ const Users = () => {
         </div>
         <div className="cell">
           <span>Country</span>
+        </div>
+        <div className="cell">
+          <span>Actions</span>
         </div>
       </div>
       <div className="tableBody">
